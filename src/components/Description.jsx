@@ -54,7 +54,7 @@ const Description = () => {
             don’t yet exist. Creativity has no limits.
           </p>
 
-          <button className="mt-6 px-6 py-2.5 bg-white text-black rounded-full font-medium hover:opacity-90 transition cursor-pointer active:scale-95">
+          <button className="mt-6 px-6 py-2.5 bg-white text-black rounded-full font-medium hover:opacity-90 transition cursor-pointer active:scale-95 ">
             Try Now
           </button>
         </div>
