@@ -32,7 +32,7 @@ const Description = () => {
             w-full max-w-xs sm:max-w-sm lg:max-w-md
             rounded-xl
             border border-zinc-800
-            hover:scale-105
+            hover:scale-[1.02]
             transition duration-300
           "
         />

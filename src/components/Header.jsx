@@ -2,7 +2,7 @@ import { assets } from "../assets/assets";
 
 const Header = () => {
   return (
-    <div className="flex flex-col justify-center items-center text-center my-20">
+    <div className="flex flex-col justify-center items-center text-center my-32">
       
       <h1 className="text-4xl sm:text-7xl mt-10 max-w-4xl">
         Turn text to <span className="text-zinc-400">image</span>, in seconds.

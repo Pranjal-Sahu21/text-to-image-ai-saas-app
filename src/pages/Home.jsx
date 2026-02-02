@@ -1,4 +1,5 @@
 import Description from "../components/Description";
+import GenerateButton from "../components/GenerateButton";
 import Header from "../components/Header";
 import Steps from "../components/Steps";
 import Testimonials from "../components/Testimonials";
@@ -10,6 +11,7 @@ function Home() {
       <Steps />
       <Description />
       <Testimonials />
+      <GenerateButton />
     </div>
   );
 }
