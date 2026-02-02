@@ -3,11 +3,7 @@ import { assets } from "../assets/assets";
 const Header = () => {
   return (
     <div className="flex flex-col justify-center items-center text-center my-20">
-      <div className="inline-flex gap-2 bg-zinc-900 border border-zinc-800 px-6 py-1 rounded-full text-zinc-400 text-sm">
-        <p>Best text to image generator</p>
-        <img src={assets.star_icon} alt="star icon" />
-      </div>
-
+      
       <h1 className="text-4xl sm:text-7xl mt-10 max-w-4xl">
         Turn text to <span className="text-zinc-400">image</span>, in seconds.
       </h1>
