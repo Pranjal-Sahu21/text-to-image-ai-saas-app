@@ -1,16 +1,33 @@
 import React from "react";
 import { assets } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const GenerateButton = () => {
   const navigate = useNavigate();
+  const fadeUp = {
+    hidden: { opacity: 0, y: 40 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
+  const fade = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { duration: 0.6 } },
+  };
   return (
-    <section className="flex flex-col items-center justify-center py-16 px-4">
-      <h1 className="text-2xl sm:text-4xl font-semibold text-white text-center mb-10">
+    <motion.section
+      initial="hidden"
+      whileInView="show"
+      className="flex flex-col items-center justify-center py-16 px-4"
+    >
+      <motion.h1
+        variants={fadeUp}
+        className="text-2xl sm:text-4xl font-semibold text-white text-center mb-10"
+      >
         See the magic. Try now
-      </h1>
+      </motion.h1>
 
-      <button
+      <motion.button
+        variants={fade}
         onClick={() => navigate("/generate")}
         className="
     inline-flex items-center gap-2 
@@ -21,8 +38,8 @@ const GenerateButton = () => {
       >
         Generate
         <img src={assets.star_group} alt="stars" className="h-4" />
-      </button>
-    </section>
+      </motion.button>
+    </motion.section>
   );
 };
 

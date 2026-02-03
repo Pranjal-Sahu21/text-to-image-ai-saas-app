@@ -1,66 +1,50 @@
 import React from "react";
 import { stepsData } from "../assets/assets";
+import { motion } from "framer-motion";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
+const stagger = {
+  show: { transition: { staggerChildren: 0.18 } },
+};
 
 const Steps = () => {
   return (
-    <section className="flex flex-col items-center justify-center my-24 sm:my-32 px-4 sm:px-6">
-      <h1 className="text-2xl sm:text-4xl font-semibold text-white mb-3 text-center">
+    <motion.section
+      variants={stagger}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true }}
+      className="flex flex-col items-center justify-center my-24 sm:my-32 px-4 sm:px-6"
+    >
+      <motion.h1 variants={fadeUp} className="text-2xl sm:text-4xl font-semibold text-white mb-3">
         How it works
-      </h1>
+      </motion.h1>
 
-      <p className="text-zinc-400 text-sm sm:text-base mb-10 sm:mb-14 text-center max-w-md">
+      <motion.p variants={fadeUp} className="text-zinc-400 mb-12 text-center">
         Transform words into stunning images
-      </p>
+      </motion.p>
 
-      <div className="w-full max-w-3xl space-y-4 sm:space-y-5">
+      <motion.div variants={stagger} className="w-full max-w-3xl space-y-5">
         {stepsData.map((item, index) => (
-          <div
+          <motion.div
             key={index}
-            className="
-              group
-              flex flex-col sm:flex-row
-              items-center sm:items-start
-              text-center sm:text-left
-              gap-4 sm:gap-5
-              p-5 sm:p-6 sm:px-8
-              rounded-xl
-              bg-zinc-900/60 backdrop-blur-md
-              border border-zinc-800
-              hover:border-zinc-700
-              hover:bg-zinc-900/80
-              hover:-translate-y-1
-              transition-all duration-300
-              cursor-pointer
-            "
+            variants={fadeUp}
+            whileHover={{ y: -4 }}
+            className="flex gap-5 p-6 rounded-xl bg-zinc-900/60 border border-zinc-800"
           >
-            <div className="
-              flex items-center justify-center
-              w-12 h-12
-              bg-zinc-900
-              rounded-lg
-              group-hover:bg-zinc-800
-              transition
-            ">
-              <img
-                src={item.icon}
-                alt="step icon"
-                className="w-5 h-5 opacity-90"
-              />
-            </div>
-
+            <img src={item.icon} className="w-6 h-6" />
             <div>
-              <h2 className="text-base sm:text-lg font-medium text-white">
-                {item.title}
-              </h2>
-
-              <p className="text-zinc-400 text-xs sm:text-sm mt-1 leading-relaxed">
-                {item.description}
-              </p>
+              <h2 className="text-white font-medium">{item.title}</h2>
+              <p className="text-zinc-400 text-sm">{item.description}</p>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 };
 
