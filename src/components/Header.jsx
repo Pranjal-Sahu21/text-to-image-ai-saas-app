@@ -47,7 +47,6 @@ const Header = () => {
         <img className="h-4" src={assets.star_group} alt="" />
       </motion.button>
 
-      {/* images */}
       <motion.div
         variants={stagger}
         className="flex flex-wrap justify-center mt-16 gap-3"
@@ -58,14 +57,16 @@ const Header = () => {
             <motion.img
               key={index}
               variants={fadeUp}
-              whileHover={{ scale: 1.08 }}
+              whileHover={{ scale: 1.04 }}
               className="rounded-lg border border-zinc-800 max-sm:w-10"
               src={index % 2 === 0 ? assets.sample_img_1 : assets.sample_img_2}
               width={70}
             />
           ))}
       </motion.div>
-      <motion.p variants={fadeUp} className="mt-3 text-zinc-500 text-sm">Generated images from crexo</motion.p>
+      <motion.p variants={fadeUp} className="mt-3 text-zinc-500 text-sm">
+        Generated images from crexo
+      </motion.p>
     </motion.div>
   );
 };

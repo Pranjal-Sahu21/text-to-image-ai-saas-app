@@ -45,7 +45,7 @@ const Description = () => {
       >
         <motion.img
           src={assets.sample_img_1}
-          whileHover={{ scale: 1.03 }}
+          whileHover={{ scale: 1.02 }}
           className="w-full max-w-xs sm:max-w-sm lg:max-w-md
             rounded-xl
             border border-zinc-800
