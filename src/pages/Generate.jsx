@@ -24,11 +24,9 @@ const Generate = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 text-white">
-      {/* ---------------- INITIAL STATE ---------------- */}
+    <div className="min-h-[90vh] flex flex-col items-center justify-center px-4 sm:px-6 text-white">
       {!image && !loading && (
         <>
-          {/* Heading */}
           <div className="text-center mb-10 sm:mb-14 max-w-xl">
             <h1 className="text-3xl sm:text-5xl md:text-6xl leading-tight mb-4 sm:mb-6">
               Turn <span className="text-zinc-400">Ideas</span> Into
@@ -42,7 +40,6 @@ const Generate = () => {
             </p>
           </div>
 
-          {/* Input */}
           <form
             onSubmit={onSubmitHandler}
             className="flex w-full max-w-md sm:max-w-lg
@@ -54,7 +51,7 @@ const Generate = () => {
               onChange={(e) => setInput(e.target.value)}
               type="text"
               placeholder="Describe your idea..."
-              className="flex-1 bg-transparent outline-none
+              className="flex-1 w-[80%] bg-transparent outline-none
                          px-3 sm:px-4 py-2 text-sm placeholder-zinc-400"
             />
 
@@ -70,28 +67,24 @@ const Generate = () => {
         </>
       )}
 
-      {/* ---------------- LOADING ---------------- */}
       {loading && (
         <div className="flex items-center justify-center">
           <div className="w-10 h-10 border-4 border-white/30 border-t-white rounded-full animate-spin" />
         </div>
       )}
 
-      {/* ---------------- RESULT ---------------- */}
       {image && !loading && (
         <div className="flex flex-col items-center gap-5 sm:gap-6 mt-6 sm:mt-8 w-full">
           <h2 className="text-base sm:text-xl font-semibold text-center">
             Your image is ready ✨
           </h2>
 
-          {/* Image */}
           <img
             src={image}
             alt="result"
             className="w-52 sm:w-72 md:w-80 rounded-xl shadow-lg"
           />
 
-          {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-5 sm:gap-4 w-[60%] sm:w-auto mt-4">
             <button
               onClick={reset}
