@@ -1,22 +1,50 @@
 import { useContext } from "react";
 import { assets, plans } from "../assets/assets";
 import { AppContext } from "../context/AppContext";
+import { motion } from "framer-motion";
 
 const BuyCredit = () => {
   const { user } = useContext(AppContext);
+
+  const fadeUp = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
+
+  const fade = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { duration: 0.6 } },
+  };
+
+  const stagger = {
+    show: { transition: { staggerChildren: 0.12 } },
+  };
   return (
     <div className="min-h-screen text-white px-6 pt-24 pb-16">
-      <div className="text-center mb-14 mt-10">
-        <h1 className="mt-6 text-3xl sm:text-4xl font-semibold">
+      <motion.div
+        initial="hidden"
+        animate="show"
+        className="text-center mb-14 mt-10"
+      >
+        <motion.h1
+          variants={fadeUp}
+          className="mt-6 text-3xl sm:text-4xl font-semibold"
+        >
           Choose the perfect plan
-        </h1>
+        </motion.h1>
 
-        <p className="text-zinc-400 text-sm sm:text-base mt-3">
+        <motion.p
+          variants={fadeUp}
+          className="text-zinc-400 text-sm sm:text-base mt-3"
+        >
           Buy credits and start generating stunning AI images
-        </p>
-      </div>
+        </motion.p>
+      </motion.div>
 
-      <div
+      <motion.div
+        initial="hidden"
+        animate="show"
+        variants={stagger}
         className="
         grid grid-cols-1 
         sm:grid-cols-2 
@@ -25,7 +53,8 @@ const BuyCredit = () => {
       "
       >
         {plans.map((item, index) => (
-          <div
+          <motion.div
+          variants={fade}
             key={index}
             className="
               bg-white/10 backdrop-blur-md border border-white/20
@@ -59,9 +88,9 @@ const BuyCredit = () => {
             >
               {user ? "Purchase" : "Get started"}
             </button>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };
