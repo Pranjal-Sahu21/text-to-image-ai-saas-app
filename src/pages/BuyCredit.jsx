@@ -1,17 +1,12 @@
+import { useContext } from "react";
 import { assets, plans } from "../assets/assets";
+import { AppContext } from "../context/AppContext";
 
 const BuyCredit = () => {
+  const { user } = useContext(AppContext);
   return (
     <div className="min-h-screen text-white px-6 pt-24 pb-16">
-      <div className="text-center mb-14">
-        <button
-          className="px-5 py-2 text-sm rounded-full
-                     bg-white/10 backdrop-blur-md border border-white/20
-                     text-zinc-300"
-        >
-          Our Plans
-        </button>
-
+      <div className="text-center mb-14 mt-10">
         <h1 className="mt-6 text-3xl sm:text-4xl font-semibold">
           Choose the perfect plan
         </h1>
@@ -62,7 +57,7 @@ const BuyCredit = () => {
                 hover:opacity-90 transition active:scale-95 cursor-pointer
               "
             >
-              Get Started
+              {user ? "Purchase" : "Get started"}
             </button>
           </div>
         ))}
