@@ -1,7 +1,9 @@
 import React from "react";
 import { assets } from "../assets/assets";
+import { useNavigate } from "react-router-dom";
 
 const Description = () => {
+  const navigate = useNavigate();
   return (
     <section className="flex flex-col items-center justify-center my-24 sm:my-32 px-4 sm:px-8 lg:px-20">
       <h1 className="text-2xl sm:text-4xl font-semibold text-white text-center mb-3">
@@ -54,7 +56,14 @@ const Description = () => {
             don’t yet exist. Creativity has no limits.
           </p>
 
-          <button className="mt-6 px-6 py-2.5 bg-white text-black rounded-full font-medium hover:opacity-90 transition cursor-pointer active:scale-95 ">
+          <button
+            onClick={() => navigate("/generate")}
+            className="
+    mt-5 px-5 py-2 text-sm
+    bg-white text-black rounded-full font-medium
+    hover:opacity-90 transition active:scale-95 cursor-pointer
+  "
+          >
             Try Now
           </button>
         </div>

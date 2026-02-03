@@ -8,7 +8,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <nav className="w-full fixed top-0 bg-zinc-950/60 backdrop-blur-md border-b border-zinc-800 px-4 sm:px-6 md:px-10 lg:px-12 py-5 flex items-center justify-between z-10">
+    <nav className="w-full fixed top-0 bg-zinc-950/60 backdrop-blur-md border-b border-zinc-800 px-4 sm:px-6 md:px-10 lg:px-12 py-5 flex items-center justify-between z-100">
       <Link to="/" className="flex gap-2 items-center">
         <img
           src={assets.logo_icon}
@@ -34,7 +34,7 @@ const Navbar = () => {
             <span className="text-zinc-300 whitespace-nowrap">Credits: 50</span>
           </button>
 
-          <p className="text-zinc-400 max-sm:hidden text-sm">Hi, Pranjal</p>
+          <p className="text-zinc-400 max-sm:hidden text-medium">Hi, Pranjal</p>
 
           <div className="relative group">
             <img
