@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { assets } from "../assets/assets";
 import { motion, AnimatePresence } from "framer-motion";
+import { AppContext } from "../context/AppContext";
 
 export default function Generate() {
   const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [input, setInput] = useState("");
+
+  const { user, generateImage } = useContext(AppContext);
 
   const fadeUp = {
     hidden: { opacity: 0, y: 40 },
@@ -36,11 +39,13 @@ export default function Generate() {
 
     setLoading(true);
 
-    // simulate API
-    setTimeout(() => {
-      setImage(assets.sample_img_1);
-      setLoading(false);
-    }, 2000);
+    if (input) {
+      const image = await generateImage(user.email, input);
+      if (image) {
+        setImage(image);
+      }
+    }
+    setLoading(false);
   };
 
   const reset = () => {
