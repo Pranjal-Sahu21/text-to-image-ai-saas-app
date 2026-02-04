@@ -3,10 +3,60 @@ import { assets } from "../assets/assets";
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import { motion, AnimatePresence } from "framer-motion";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [isSignup, setIsSignup] = useState(false);
-  const { setShowLogin } = useContext(AppContext);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const { setShowLogin, backendUrl, setToken, setUser } =
+    useContext(AppContext);
+
+  const onSubmitHandler = async (e) => {
+    e.preventDefault();
+
+    try {
+      if (!isSignup) {
+        const response = await axios.post(backendUrl + "/api/user/login", {
+          email,
+          password,
+        });
+
+        const data = response.data;
+
+        if (data.success) {
+          setToken(data.token);
+          setUser(data.user);
+          localStorage.setItem("token", data.token);
+          setShowLogin(false);
+        } else {
+          toast.error(data.message);
+        }
+      } else {
+        const response = await axios.post(backendUrl + "/api/user/register", {
+          name,
+          email,
+          password,
+        });
+
+        const data = response.data;
+
+        if (data.success) {
+          setToken(data.token);
+          setUser(data.user);
+          localStorage.setItem("token", data.token);
+          setShowLogin(false);
+        } else {
+          toast.error(data.message);
+        }
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -39,6 +89,7 @@ const Login = () => {
           ease: [0.16, 1, 0.3, 1],
         }}
         onClick={(e) => e.stopPropagation()}
+        onSubmit={onSubmitHandler}
         className="
           relative
           w-full max-w-sm
@@ -110,6 +161,8 @@ const Login = () => {
                   className="w-4 opacity-70"
                 />
                 <input
+                  onChange={(e) => setName(e.target.value)}
+                  value={name}
                   type="text"
                   placeholder="Full Name"
                   className="flex-1 bg-transparent outline-none text-sm placeholder-zinc-400"
@@ -126,6 +179,8 @@ const Login = () => {
         >
           <img src={assets.email_icon} alt="" className="w-4 opacity-70" />
           <input
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
             type="email"
             placeholder="Email"
             className="flex-1 bg-transparent outline-none text-sm placeholder-zinc-400"
@@ -140,43 +195,13 @@ const Login = () => {
           <div className="flex items-center gap-3 bg-white/10 border border-white/20 rounded-full px-4 py-2.5">
             <img src={assets.lock_icon} alt="" className="w-4 opacity-70" />
             <input
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
               type="password"
               placeholder="Password"
               className="flex-1 bg-transparent outline-none text-sm placeholder-zinc-400"
             />
           </div>
-
-          <AnimatePresence initial={false}>
-            {isSignup && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{
-                  opacity: 1,
-                  height: "auto",
-                  transition: { duration: 0.2, ease: "easeOut" },
-                }}
-                exit={{
-                  opacity: 0,
-                  height: 0,
-                  transition: { duration: 0.15, ease: "easeIn" },
-                }}
-                className="overflow-hidden"
-              >
-                <div className="flex items-center gap-3 bg-white/10 border border-white/20 rounded-full px-4 py-2.5 mt-3">
-                  <img
-                    src={assets.lock_icon}
-                    alt=""
-                    className="w-4 opacity-70"
-                  />
-                  <input
-                    type="password"
-                    placeholder="Confirm Password"
-                    className="flex-1 bg-transparent outline-none text-sm placeholder-zinc-400"
-                  />
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
         </motion.div>
 
         <AnimatePresence initial={false}>

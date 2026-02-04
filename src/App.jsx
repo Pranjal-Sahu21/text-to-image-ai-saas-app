@@ -8,11 +8,13 @@ import Login from "./components/Login";
 import { useContext } from "react";
 import { AppContext } from "./context/AppContext";
 import ProtectedRoute from "./pages/ProtectedRoute";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   const { showLogin } = useContext(AppContext);
   return (
     <>
+      <ToastContainer position="bottom-right" />
       <Navbar />
       {showLogin && <Login />}
       <div className="min-h-full px-4 sm:px-10 md:px-14 lg:px-28 bg-black bg-[radial-gradient(#27272a_1px,transparent_1px)] bg-size-[20px_20px] text-white">

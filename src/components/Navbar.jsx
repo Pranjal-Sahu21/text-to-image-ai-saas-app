@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 
 const Navbar = () => {
-  const { user } = useContext(AppContext);
+  const { user, logout, credit } = useContext(AppContext);
   const navigate = useNavigate();
   const { setShowLogin } = useContext(AppContext);
 
@@ -32,10 +32,14 @@ const Navbar = () => {
               src={assets.credit_star}
               alt="credit star"
             />
-            <span className="text-zinc-300 whitespace-nowrap">Credits: 50</span>
+            <span className="text-zinc-300 whitespace-nowrap">
+              Credits: {credit}
+            </span>
           </button>
 
-          <p className="text-zinc-400 max-sm:hidden text-medium">Hi, Pranjal</p>
+          <p className="text-zinc-400 max-sm:hidden text-medium">
+            Hi, {user.name}
+          </p>
 
           <div className="relative group">
             <img
@@ -43,9 +47,12 @@ const Navbar = () => {
               alt="user"
               className="w-8 sm:w-10 rounded-full drop-shadow cursor-pointer"
             />
-            <div className="absolute hidden group-hover:block right-0 mt-2 z-10">
+            <div className="absolute hidden group-hover:block right-0 z-10">
               <ul className="bg-zinc-900 border border-zinc-800 rounded-md text-sm shadow-lg">
-                <li className="px-4 py-2 hover:bg-zinc-800 cursor-pointer">
+                <li
+                  onClick={logout}
+                  className="px-4 py-2 hover:bg-zinc-800 cursor-pointer"
+                >
                   Logout
                 </li>
               </ul>
