@@ -39,9 +39,10 @@ const Header = () => {
 
       <motion.button
         variants={fadeUp}
-        whileTap={{ scale: 0.95 }}
+        whileTap={{scale: 0.95}}
+        whileHover={{opacity: 0.9}}
         onClick={() => navigate("/generate")}
-        className="mt-6 px-5 py-2 bg-white text-black rounded-full flex items-center gap-2 text-sm font-medium"
+        className="mt-6 px-5 py-2 bg-white text-black rounded-full flex items-center gap-2 text-sm font-medium cursor-pointer"
       >
         Generate Images
         <img className="h-4" src={assets.star_group} alt="" />

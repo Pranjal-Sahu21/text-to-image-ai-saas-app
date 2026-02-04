@@ -75,7 +75,7 @@ const Description = () => {
             onClick={() => navigate("/generate")}
             className="mt-5 px-5 py-2 text-sm
     bg-white text-black rounded-full font-medium
-    hover:opacity-90 transition active:scale-95 cursor-pointer"
+    hover:opacity-90 cursor-pointer"
           >
             Try Now
           </motion.button>
