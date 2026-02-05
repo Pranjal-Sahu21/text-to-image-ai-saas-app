@@ -79,18 +79,18 @@ const BuyCredit = () => {
       <motion.div
         initial="hidden"
         animate="show"
-        className="text-center mb-14 mt-10"
+        className="text-center mb-14 mt-16"
       >
         <motion.h1
           variants={fadeUp}
-          className="text-3xl sm:text-4xl font-semibold"
+          className="text-4xl sm:text-5xl"
         >
-          Choose the perfect plan
+          <span className="text-zinc-400">Choose</span> the perfect <span className="text-zinc-400">plan</span>
         </motion.h1>
 
         <motion.p
           variants={fadeUp}
-          className="text-zinc-400 text-sm sm:text-base mt-3"
+          className="text-zinc-400 text-sm sm:text-base mt-6"
         >
           Buy credits and start generating stunning AI images
         </motion.p>
