@@ -11,6 +11,14 @@ const stagger = {
   show: { transition: { staggerChildren: 0.12 } },
 };
 
+const images = [
+  assets.sample_img_1,
+  assets.sample_img_2,
+  assets.sample_img_3,
+  assets.sample_img_4,
+  assets.sample_img_5,
+];
+
 const Header = () => {
   const navigate = useNavigate();
 
@@ -39,8 +47,8 @@ const Header = () => {
 
       <motion.button
         variants={fadeUp}
-        whileTap={{scale: 0.95}}
-        whileHover={{opacity: 0.9}}
+        whileTap={{ scale: 0.95 }}
+        whileHover={{ opacity: 0.9 }}
         onClick={() => navigate("/generate")}
         className="mt-6 px-5 py-2 bg-white text-black rounded-full flex items-center gap-2 text-sm font-medium cursor-pointer"
       >
@@ -52,18 +60,16 @@ const Header = () => {
         variants={stagger}
         className="flex flex-wrap justify-center mt-16 gap-3"
       >
-        {Array(5)
-          .fill("")
-          .map((_, index) => (
-            <motion.img
-              key={index}
-              variants={fadeUp}
-              whileHover={{ scale: 1.04 }}
-              className="rounded-lg border border-zinc-800 max-sm:w-10"
-              src={index % 2 === 0 ? assets.sample_img_1 : assets.sample_img_2}
-              width={70}
-            />
-          ))}
+        {images.map((img, index) => (
+          <motion.img
+            key={index}
+            variants={fadeUp}
+            whileHover={{ scale: 1.04 }}
+            className="rounded-lg border border-zinc-800 max-sm:w-10"
+            src={img}
+            width={70}
+          />
+        ))}
       </motion.div>
       <motion.p variants={fadeUp} className="mt-3 text-zinc-500 text-sm">
         Generated images from crexo

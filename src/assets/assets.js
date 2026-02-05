@@ -6,9 +6,13 @@ import twitter_icon from "./twitter_icon.svg";
 import star_icon from "./star_icon.svg";
 import rating_star from "./rating_star.svg";
 import sample_img_1 from "./sample_img_1.png";
-import sample_img_2 from "./sample_img_2.png";
+import sample_img_2 from "./download.png";
+import sample_img_3 from "./download2.png";
+import sample_img_4 from "./download3.png";
+import sample_img_5 from "./download4.png";
 import profile_img_1 from "./profile_img_1.png";
 import profile_img_2 from "./profile_img_2.png";
+import profile_img_3 from "./samantha_lee.webp";
 import step_icon_1 from "./step_icon_1.svg";
 import step_icon_2 from "./step_icon_2.svg";
 import step_icon_3 from "./step_icon_3.svg";
@@ -29,6 +33,9 @@ export const assets = {
   rating_star,
   sample_img_1,
   sample_img_2,
+  sample_img_3,
+  sample_img_4,
+  sample_img_5,
   email_icon,
   lock_icon,
   cross_icon,
@@ -74,7 +81,7 @@ export const testimonialsData = [
     text: `Crexo helps me create unique visuals for my social media campaigns. The AI output is impressive and saves me hours.`,
   },
   {
-    image: profile_img_1,
+    image: profile_img_3,
     name: "Samantha Lee",
     role: "Marketing Specialist",
     stars: 5,
