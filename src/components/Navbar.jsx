@@ -32,7 +32,7 @@ const Navbar = () => {
               src={assets.credit_star}
               alt="credit star"
             />
-            <span className="text-zinc-300 whitespace-nowrap">
+            <span onClick={() => navigate('/buy')} className="text-zinc-300 whitespace-nowrap cursor-pointer">
               Credits: {credit}
             </span>
           </button>
