@@ -42,10 +42,9 @@ const AppContextProvider = ({ children }) => {
     }
   };
 
-  const generateImage = async (email, prompt) => {
+  const generateImage = async (prompt) => {
     try {
       const { data } = await axios.post(backendUrl + "/api/image/generate", {
-        email,
         prompt,
       });
 
