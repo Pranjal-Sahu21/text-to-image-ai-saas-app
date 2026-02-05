@@ -28,7 +28,7 @@ const Header = () => {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true }}
-      className="flex flex-col justify-center items-center text-center my-32"
+      className="flex flex-col justify-center items-center text-center my-32 overflow-hidden"
     >
       <motion.h1
         variants={fadeUp}
@@ -56,24 +56,62 @@ const Header = () => {
         <img className="h-4" src={assets.star_group} alt="" />
       </motion.button>
 
+      <div className="sm:hidden relative w-full mt-14 overflow-hidden">
+        <div className="absolute inset-y-0 left-0 w-10 bg-linear-to-r from-black to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-10 bg-linear-to-l from-black to-transparent z-10 pointer-events-none" />
+
+        <div className="header-marquee">
+          {[...images, ...images].map((img, index) => (
+            <img
+              key={index}
+              src={img}
+              className="
+                w-28 h-28
+                rounded-xl
+                object-cover
+                border border-zinc-800
+                mr-4
+                shrink-0
+              "
+            />
+          ))}
+        </div>
+      </div>
+
       <motion.div
         variants={stagger}
-        className="flex flex-wrap justify-center mt-16 gap-3"
+        className="hidden sm:flex flex-wrap justify-center mt-16 gap-3"
       >
         {images.map((img, index) => (
           <motion.img
             key={index}
             variants={fadeUp}
             whileHover={{ scale: 1.04 }}
-            className="rounded-lg border border-zinc-800 max-sm:w-10"
-            src={img}
+            className="rounded-lg border border-zinc-800"
             width={70}
+            src={img}
           />
         ))}
       </motion.div>
+
       <motion.p variants={fadeUp} className="mt-3 text-zinc-500 text-sm">
         Generated images from crexo
       </motion.p>
+
+      <style>
+        {`
+          .header-marquee {
+            display: flex;
+            width: max-content;
+            animation: headerMarquee 18s linear infinite;
+          }
+
+          @keyframes headerMarquee {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+          }
+        `}
+      </style>
     </motion.div>
   );
 };

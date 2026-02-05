@@ -13,6 +13,13 @@ import sample_img_5 from "./download4.png";
 import profile_img_1 from "./profile_img_1.png";
 import profile_img_2 from "./profile_img_2.png";
 import profile_img_3 from "./samantha_lee.webp";
+import profile_img_4 from "./profile_img_4.jpeg";
+import profile_img_5 from "./profile_img_5.jpeg";
+import profile_img_6 from "./profile_img_6.jpeg";
+import profile_img_7 from "./profile_img_7.jpeg";
+import profile_img_8 from "./profile_img_8.jpeg";
+import profile_img_9 from "./profile_img_9.jpeg";
+import profile_img_10 from "./profile_img_10.jpeg";
 import step_icon_1 from "./step_icon_1.svg";
 import step_icon_2 from "./step_icon_2.svg";
 import step_icon_3 from "./step_icon_3.svg";
@@ -86,6 +93,55 @@ export const testimonialsData = [
     role: "Marketing Specialist",
     stars: 5,
     text: `I love how easy it is to turn ideas into images instantly. It's a huge productivity boost for my campaigns.`,
+  },
+  {
+    image: profile_img_4,
+    name: "Emily Carter",
+    role: "UI/UX Designer",
+    stars: 5,
+    text: `Crexo speeds up my design workflow massively. I can prototype visuals in minutes instead of hours. Absolute game changer.`,
+  },
+  {
+    image: profile_img_5,
+    name: "Michael Brown",
+    role: "Startup Founder",
+    stars: 5,
+    text: `We use Crexo for all our marketing creatives. It saves us thousands in design costs while delivering stunning quality.`,
+  },
+  {
+    image: profile_img_6,
+    name: "Olivia Martinez",
+    role: "Social Media Manager",
+    stars: 4,
+    text: `Generating fresh content daily used to be stressful. Now Crexo gives me endless ideas and beautiful visuals instantly.`,
+  },
+  {
+    image: profile_img_7,
+    name: "Daniel Kim",
+    role: "Indie Game Developer",
+    stars: 5,
+    text: `The AI art generation is incredibly detailed. I use it for concept art and environment ideas all the time.`,
+  },
+  {
+    image: profile_img_8,
+    name: "Sophia Wilson",
+    role: "Brand Strategist",
+    stars: 5,
+    text: `Crexo helps me visualize brand concepts quickly for clients. It makes presentations far more impactful and professional.`,
+  },
+  {
+    image: profile_img_9,
+    name: "James Anderson",
+    role: "YouTuber",
+    stars: 4,
+    text: `Thumbnails, banners, backgrounds — Crexo handles everything. My production time has dropped by half.`,
+  },
+  {
+    image: profile_img_10,
+    name: "Isabella Thomas",
+    role: "Freelancer",
+    stars: 5,
+    text: `As a solo creator, Crexo feels like having an entire design team. Fast, reliable, and super easy to use.`,
   },
 ];
 
