@@ -5,7 +5,7 @@ import instagram_icon from "./instagram_icon.svg";
 import twitter_icon from "./twitter_icon.svg";
 import star_icon from "./star_icon.svg";
 import rating_star from "./rating_star.svg";
-import sample_img_1 from "./sample_img_1.png";
+import sample_img_1 from "./download1.png";
 import sample_img_2 from "./download.png";
 import sample_img_3 from "./download2.png";
 import sample_img_4 from "./download3.png";

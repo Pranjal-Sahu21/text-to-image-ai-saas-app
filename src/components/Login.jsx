@@ -11,12 +11,17 @@ const Login = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const { setShowLogin, backendUrl, setToken, setUser } =
     useContext(AppContext);
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
+
+    if (loading) return;
+
+    setLoading(true);
 
     try {
       if (!isSignup) {
@@ -55,6 +60,8 @@ const Login = () => {
       }
     } catch (error) {
       toast.error(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -238,6 +245,7 @@ const Login = () => {
 
         <motion.button
           layout
+          disabled={loading}
           transition={{ duration: 0.15 }}
           className="
             w-full
@@ -246,20 +254,33 @@ const Login = () => {
             rounded-full font-medium
             hover:opacity-90
             transition cursor-pointer
-            active:scale-95 mt-3
+            active:scale-95 mt-3 disabled:opacity-60 disabled:cursor-not-allowed
           "
         >
           <AnimatePresence mode="wait">
-            <motion.span
-              key={isSignup ? "signup-btn" : "login-btn"}
-              initial={{ opacity: 0, y: -5 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 5 }}
-              transition={{ duration: 0.1 }}
-              className="inline-block"
-            >
-              {isSignup ? "Create Account" : "Login"}
-            </motion.span>
+            {loading ? (
+              <motion.div
+                key="loader"
+                initial={{ opacity: 0, y: -5 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 5 }}
+                transition={{ duration: 0.1 }}
+                className="flex items-center justify-center"
+              >
+                <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" />
+              </motion.div>
+            ) : (
+              <motion.span
+                key={isSignup ? "signup-btn" : "login-btn"}
+                initial={{ opacity: 0, y: -5 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 5 }}
+                transition={{ duration: 0.1 }}
+                className="inline-block"
+              >
+                {isSignup ? "Create Account" : "Login"}
+              </motion.span>
+            )}
           </AnimatePresence>
         </motion.button>
 

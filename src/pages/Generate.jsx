@@ -40,7 +40,7 @@ export default function Generate() {
     setLoading(true);
 
     if (input) {
-      const image = await generateImage(user.email, input);
+      const image = await generateImage(input);
       if (image) {
         setImage(image);
       }
@@ -149,7 +149,7 @@ export default function Generate() {
               <motion.button
                 onClick={reset}
                 className="px-5 py-2 text-sm bg-white text-black
-                           rounded-full font-medium hover:opacity-90 active:scale-95"
+                           rounded-full font-medium hover:opacity-90 active:scale-95 cursor-pointer transition"
               >
                 Generate Another
               </motion.button>
@@ -159,7 +159,7 @@ export default function Generate() {
                 download
                 className="flex items-center justify-center px-5 py-2 text-sm
                            bg-zinc-900 text-white rounded-full border border-white/20
-                           hover:bg-zinc-800 active:scale-95"
+                           hover:bg-zinc-800 active:scale-95 transition"
               >
                 Download
               </motion.a>
