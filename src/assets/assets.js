@@ -6,10 +6,11 @@ import twitter_icon from "./twitter_icon.svg";
 import star_icon from "./star_icon.svg";
 import rating_star from "./rating_star.svg";
 import sample_img_1 from "./download1.png";
-import sample_img_2 from "./download.png";
-import sample_img_3 from "./download2.png";
-import sample_img_4 from "./download3.png";
+import sample_img_2 from "./download5.png";
+import sample_img_3 from "./download6.png";
+import sample_img_4 from "./download7.png";
 import sample_img_5 from "./download4.png";
+import sample_img_6 from "./download8.png";
 import profile_img_1 from "./profile_img_1.png";
 import profile_img_2 from "./profile_img_2.png";
 import profile_img_3 from "./samantha_lee.webp";
@@ -43,6 +44,7 @@ export const assets = {
   sample_img_3,
   sample_img_4,
   sample_img_5,
+  sample_img_6,
   email_icon,
   lock_icon,
   cross_icon,

@@ -17,6 +17,7 @@ const images = [
   assets.sample_img_3,
   assets.sample_img_4,
   assets.sample_img_5,
+  assets.sample_img_6,
 ];
 
 const Header = () => {

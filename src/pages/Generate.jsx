@@ -112,13 +112,23 @@ export default function Generate() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="flex items-center justify-center"
+            className="flex flex-col gap-4 items-center justify-center"
           >
             <motion.div
               variants={spin}
               animate="animate"
-              className="w-12 h-12 border-4 border-white/30 border-t-white rounded-full"
+              className="w-10 h-10 border-4 border-white/30 border-t-white rounded-full"
             />
+
+            <motion.p
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ delay: 0.1 }}
+              className="text-white text-sm sm:text-base tracking-wide"
+            >
+              Generating your image...
+            </motion.p>
           </motion.div>
         )}
 

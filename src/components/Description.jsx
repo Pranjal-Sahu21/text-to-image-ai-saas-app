@@ -44,7 +44,7 @@ const Description = () => {
           shadow-lg"
       >
         <motion.img
-          src={assets.sample_img_5}
+          src={assets.sample_img_2}
           whileHover={{ scale: 1.02 }}
           className="w-full max-w-xs sm:max-w-sm lg:max-w-md
             rounded-xl
