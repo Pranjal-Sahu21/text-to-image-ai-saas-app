@@ -32,7 +32,7 @@ const Header = () => {
     >
       <motion.h1
         variants={fadeUp}
-        className="text-4xl sm:text-7xl mt-10 max-w-4xl"
+        className="mt-14 text-4xl sm:text-7xl max-w-4xl"
       >
         Turn text to <span className="text-zinc-400">image</span>, in seconds.
       </motion.h1>

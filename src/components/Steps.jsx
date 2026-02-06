@@ -18,7 +18,7 @@ const Steps = () => {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true }}
-      className="flex flex-col items-center justify-center my-24 sm:my-32 px-4 sm:px-6"
+      className="flex flex-col items-center justify-center my-24 sm:my-32 px-4 sm:px-6 pt-12"
     >
       <motion.h1 variants={fadeUp} className="text-2xl sm:text-4xl font-semibold text-white mb-3">
         How it works
