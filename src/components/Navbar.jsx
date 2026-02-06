@@ -1,12 +1,28 @@
 import { Link, useNavigate } from "react-router-dom";
 import { assets } from "../assets/assets";
-import { useContext } from "react";
+import { useContext, useState, useEffect, useRef } from "react";
 import { AppContext } from "../context/AppContext";
+import { FiLogOut, FiUser } from "react-icons/fi";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Navbar = () => {
   const { user, logout, credit } = useContext(AppContext);
   const navigate = useNavigate();
   const { setShowLogin } = useContext(AppContext);
+  const [open, setOpen] = useState(false);
+
+  const menuRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
     <nav className="w-full fixed top-0 bg-zinc-950/60 backdrop-blur-md border-b border-zinc-800 px-4 sm:px-6 md:px-10 lg:px-12 py-5 flex items-center justify-between z-100">
@@ -32,7 +48,10 @@ const Navbar = () => {
               src={assets.credit_star}
               alt="credit star"
             />
-            <span onClick={() => navigate('/buy')} className="text-zinc-300 whitespace-nowrap cursor-pointer">
+            <span
+              onClick={() => navigate("/buy")}
+              className="text-zinc-300 whitespace-nowrap cursor-pointer"
+            >
               Credits: {credit}
             </span>
           </button>
@@ -41,22 +60,48 @@ const Navbar = () => {
             Hi, {user.name}
           </p>
 
-          <div className="relative group">
+          <div ref={menuRef} className="relative">
             <img
               src={assets.profile_icon}
               alt="user"
-              className="w-8 sm:w-10 rounded-full drop-shadow cursor-pointer"
+              onClick={() => setOpen(!open)}
+              className="w-9 sm:w-10 rounded-full drop-shadow cursor-pointer ring-2 ring-zinc-700 hover:ring-zinc-500 transition"
             />
-            <div className="absolute hidden group-hover:block right-0 z-10">
-              <ul className="bg-zinc-900 border border-zinc-800 rounded-md text-sm shadow-lg">
-                <li
-                  onClick={logout}
-                  className="px-4 py-2 hover:bg-zinc-800 cursor-pointer"
+
+            <AnimatePresence>
+              {open && (
+                <motion.div
+                  initial={{ opacity: 0, y: -8, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -8, scale: 0.95 }}
+                  transition={{ duration: 0.18, ease: "easeOut" }}
+                  className="absolute right-0 mt-3 w-44 sm:w-30 bg-zinc-900 border border-zinc-800 rounded-xl shadow-xl overflow-hidden"
                 >
-                  Logout
-                </li>
-              </ul>
-            </div>
+                  <div className="flex items-center gap-2 px-4 py-3 text-sm text-zinc-300 border-b border-zinc-800 sm:hidden">
+                    <FiUser size={16} />
+                    <div className="flex flex-col">
+                      <span>Hi, {user.name}</span>
+                      <span className="text-xs text-zinc-500">
+                        {user.email}
+                      </span>
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={() => {
+                      logout();
+                      setOpen(false);
+                    }}
+                    className="w-full flex items-center gap-2 px-4 py-3 text-sm text-red-400 hover:bg-zinc-800 active:bg-zinc-700 active:scale-95 cursor-pointer transition"
+                  >
+                    <div className="flex w-full justify-center items-center gap-1.5">
+                      <FiLogOut size={16} />
+                      Logout
+                    </div>
+                  </button>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
       ) : (
