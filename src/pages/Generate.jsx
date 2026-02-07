@@ -1,14 +1,16 @@
 import { useContext, useState } from "react";
-import { assets } from "../assets/assets";
 import { motion, AnimatePresence } from "framer-motion";
 import { AppContext } from "../context/AppContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Generate() {
   const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [input, setInput] = useState("");
 
-  const { user, generateImage } = useContext(AppContext);
+  const navigate = useNavigate();
+
+  const { generateImage, credit } = useContext(AppContext);
 
   const fadeUp = {
     hidden: { opacity: 0, y: 40 },
@@ -36,6 +38,10 @@ export default function Generate() {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     if (!input.trim()) return;
+
+    if (credit === 0) {
+      navigate("/buy");
+    }
 
     setLoading(true);
 
