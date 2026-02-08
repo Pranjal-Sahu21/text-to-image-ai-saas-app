@@ -6,9 +6,70 @@ import Slider from "react-slick";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 const BuyCredit = () => {
-  const { user } = useContext(AppContext);
+  const { user, backendUrl, loadCreditsData, token, setShowLogin } =
+    useContext(AppContext);
+
+  const navigate = useNavigate();
+
+  const initializePayment = async (order) => {
+    const options = {
+      key: import.meta.env.VITE_RAZORPAY_KEY_ID,
+
+      amount: order.amount,
+      currency: order.currency,
+
+      name: "Credits payment",
+      description: "Credits payment",
+
+      order_id: order.id,
+
+      handler: async (response) => {
+        try {
+          const { data } = await axios.post(
+            backendUrl + "/api/user/verify-razor",
+            response,
+            { headers: { token } },
+          );
+
+          if (data.success) {
+            loadCreditsData();
+            navigate("/");
+            toast.success("Credits added");
+          }
+        } catch (error) {
+          toast.error(error.message);
+        }
+      },
+    };
+
+    const razor = new window.Razorpay(options);
+    razor.open();
+  };
+
+  const paymentRazorpay = async (planId) => {
+    if (!user) {
+      setShowLogin(true);
+      return;
+    }
+    try {
+      const { data } = await axios.post(
+        backendUrl + "/api/user/pay-razor",
+        { userId: user.id, planId, },
+        { headers: { token } },
+      );
+
+      if (data.success) {
+        initializePayment(data.order);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
 
   const fadeUp = {
     hidden: { opacity: 0, y: 20 },
@@ -63,6 +124,7 @@ const BuyCredit = () => {
       </p>
 
       <button
+        onClick={() => paymentRazorpay(item.id)}
         className="
           mt-6 px-5 py-2 text-sm
           bg-white text-black rounded-full font-medium
@@ -81,11 +143,9 @@ const BuyCredit = () => {
         animate="show"
         className="text-center mb-14 mt-16"
       >
-        <motion.h1
-          variants={fadeUp}
-          className="text-3xl sm:text-4xl"
-        >
-          <span className="text-zinc-300">Choose</span> the perfect <span className="text-zinc-300">plan</span>
+        <motion.h1 variants={fadeUp} className="text-3xl sm:text-4xl">
+          <span className="text-zinc-300">Choose</span> the perfect{" "}
+          <span className="text-zinc-300">plan</span>
         </motion.h1>
 
         <motion.p
