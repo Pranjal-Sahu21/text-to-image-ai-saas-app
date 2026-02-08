@@ -233,7 +233,7 @@ const Login = () => {
                 type="button"
                 className="
                   text-xs text-zinc-300
-                  hover:text-white cursor-pointer hover:underline underline-offset-4
+                  hover:text-white cursor-pointer hover:underline
                   transition
                 "
               >
