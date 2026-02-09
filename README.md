@@ -2,6 +2,9 @@
 
 A full-stack MERN application that transforms text prompts into stunning AI-generated images using the Clipdrop API. Built with modern web technologies and integrated with Razorpay for seamless payments.
 
+![Preview](https://i.postimg.cc/wjj68CMT/crexo-image.png)
+
+
 ## 🌟 Features
 
 - **AI-Powered Image Generation** - Convert text descriptions into high-quality images via Clipdrop API
