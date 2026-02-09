@@ -19,6 +19,11 @@ const Login = () => {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
 
+    if(!email.trim() || !password.trim() || (isSignup && !name.trim())) {
+      toast.error("Please fill in all fields");
+      return;
+    }
+
     if (loading) return;
 
     setLoading(true);
