@@ -9,6 +9,7 @@ import { useContext } from "react";
 import { AppContext } from "./context/AppContext";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import { Slide, ToastContainer } from "react-toastify";
+import NotFound from "./components/NotFound";
 
 const App = () => {
   const { showLogin } = useContext(AppContext);
@@ -39,6 +40,7 @@ const App = () => {
             }
           />
           <Route path="/buy" element={<BuyCredit />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
       <Footer />

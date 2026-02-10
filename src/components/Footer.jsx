@@ -1,4 +1,3 @@
-import React from "react";
 import { FaFacebookF, FaInstagram, FaEnvelope } from "react-icons/fa";
 import { assets } from "../assets/assets";
 
