@@ -10,7 +10,7 @@ export default function NotFound() {
         transition={{ duration: 0.6 }}
         className="
           text-center
-          bg-white/5 backdrop-blur-xl
+          bg-zinc-900/60 backdrop-blur-xl
           border border-white/10
           rounded-3xl
           p-10 sm:p-14
