@@ -255,7 +255,8 @@ client/
 │   │   ├── Description.jsx
 │   │   ├── Testimonials.jsx
 │   │   ├── GenerateButton.jsx
-│   │   └── Footer.jsx
+│   │   ├── Footer.jsx
+│   │   └── NotFound.jsx
 │   ├── pages/         # Route components
 │   │   ├── Home.jsx
 │   │   ├── Generate.jsx
