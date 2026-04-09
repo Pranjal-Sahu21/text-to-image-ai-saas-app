@@ -13,6 +13,7 @@ A full-stack MERN application that transforms text prompts into stunning AI-gene
 
 - **AI-Powered Image Generation** - Convert text descriptions into high-quality images via Clipdrop API
 - **Secure Authentication** - JWT-based user registration and login with password hashing
+- **Forgot Password Functionality** - Sends a 6-digit timed OTP to user using Nodemailer + Resend
 - **Credit System** - Flexible credit-based model (1 credit = 1 image)
 - **Payment Integration** - Razorpay integration with three subscription tiers
 - **Responsive UI** - Beautiful, mobile-first design with smooth animations
@@ -47,6 +48,8 @@ A full-stack MERN application that transforms text prompts into stunning AI-gene
 ### External Services
 - **Clipdrop Text-to-Image API** - AI image generation
 - **Razorpay** - Payment gateway
+- **Resend** - Email sending service
+- **Nodemailer** - SMTP client 
 - **MongoDB Atlas** - Cloud database
 
 ## 📦 Installation & Setup
@@ -57,6 +60,7 @@ A full-stack MERN application that transforms text prompts into stunning AI-gene
 - MongoDB Atlas account
 - Razorpay account
 - Clipdrop API key
+- Resend API key
 
 ### Backend Setup
 
@@ -75,6 +79,7 @@ A full-stack MERN application that transforms text prompts into stunning AI-gene
    RAZORPAY_KEY_SECRET=your_razorpay_secret_key
    CURRENCY=INR
    CLIPDROP_API_KEY=your_clipdrop_api_key
+   RESEND_API_KEY=your_resend_api_key
    ```
 
 3. **Start server**
@@ -122,6 +127,7 @@ A full-stack MERN application that transforms text prompts into stunning AI-gene
 | `RAZORPAY_KEY_SECRET` | Razorpay secret key | `5hjLnXxxx` |
 | `CURRENCY` | Payment currency | `INR`, `USD` |
 | `CLIPDROP_API_KEY` | Clipdrop API key | `xxxxxxxxxxxx` |
+| `RESEND_API_KEY` | Resend API key | `xxxxxxxxxxxx` |
 
 ## 💳 Razorpay Integration
 
@@ -226,6 +232,8 @@ Users start with **5 free credits** upon registration.
 | GET | `/credits` | ✅ | Get user credits |
 | POST | `/pay-razor` | ✅ | Create payment order |
 | POST | `/verify-razor` | - | Verify payment |
+| POST | `/forgot-password` | - | Forgot password |
+| POST | `/verify-reset-code` | - | Verify OTP |
 
 ### Image Routes (`/api/image`)
 
@@ -331,4 +339,5 @@ npm run lint     # Run ESLint
 - [MongoDB Atlas Setup](https://www.mongodb.com/docs/atlas/)
 - [Netlify Deployment](https://docs.netlify.com/)
 - [Render Deployment](https://render.com/docs/web-services)
+- [Resend Email Service](https://resend.com)
 
